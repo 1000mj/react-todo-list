@@ -1,10 +1,11 @@
 import React, {useEffect} from "react";
+import { RecoilRoot } from "recoil";
+import { HashRouter } from "react-router-dom";
 
 import { createTheme, ThemeProvider, CssBaseline} from "@mui/material";
 
 import App from "./App";
-import { RecoilRoot } from "recoil";
-import { HashRouter } from "react-router-dom";
+
 
 const muiThemePaletteKeys = [
   "background",
