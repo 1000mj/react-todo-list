@@ -1,6 +1,9 @@
 import { TextField, Button } from "@mui/material";
+import { useTodosStatus } from "../hooks";
 
 export default function WritePage() {
+  const todosStatus = useTodosStatus();
+
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -19,13 +22,15 @@ export default function WritePage() {
 
       return;
     }
+
+    todosStatus.addTodo(form.regDate.value, form.content.value);
   };
 
   return (
     <>
       <form className="flex-1 flex p-10 flex-col gap-7" onSubmit={onSubmit}>
         <TextField
-          label="언제 해야 하나요?"
+          label="언제 해야 하나요 ?"
           focused
           type="datetime-local"
           name="regDate"
