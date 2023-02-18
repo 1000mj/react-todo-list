@@ -1,11 +1,9 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
+import { CssBaseline, createTheme, ThemeProvider } from "@mui/material";
 import { RecoilRoot } from "recoil";
 import { HashRouter } from "react-router-dom";
 
-import { createTheme, ThemeProvider, CssBaseline} from "@mui/material";
-
 import App from "./App";
-
 
 const muiThemePaletteKeys = [
   "background",
@@ -27,7 +25,7 @@ export default function Root() {
     },
     palette: {
       primary: {
-        main: "#ff9900",
+        main: "#8fa9ff",
         contrastText: "#ffffff",
       },
     },
