@@ -1,76 +1,68 @@
-import { TextField, Button } from "@mui/material";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { useNoticeSnackbarStatus } from "../components/NoticeSnackbar";
+import { useNoticeSnackbarStatus } from "./NoticeSnackbar";
 import { useTodosStatus } from "../hooks";
+import { SwipeableDrawer, List, ListItem, Divider } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
-export default function EditPage() {
-  const navigate = useNavigate();
-  const { id } = useParams();
-
+export default function TodoOptionDrawer({ status }) {
   const noticeSnackbarStatus = useNoticeSnackbarStatus();
   const todosStatus = useTodosStatus();
 
-  const todo = todosStatus.findTodoById(id);
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-
-    if (form.performDate.value.length == 0) {
-      alert("날짜를 입력해주세요.");
-      form.performDate.focus();
-
+  const removeTodo = () => {
+    if (
+      window.confirm(`${status.todoId}번 할일을 삭제하시겠습니까?`) == false
+    ) {
+      status.close();
       return;
     }
 
-    if (form.content.value.length == 0) {
-      alert("내용을 입력해주세요.");
-      form.content.focus();
-
-      return;
-    }
-
-    const newTodoId = todosStatus.modifyTodoById(
-      todo.id,
-      form.performDate.value,
-      form.content.value
+    todosStatus.removeTodoById(status.todoId);
+    status.close();
+    noticeSnackbarStatus.open(
+      `${status.todoId}번 할일이 삭제되었습니다.`,
+      "info"
     );
-
-    noticeSnackbarStatus.open(`${todo.id}번 할 일이 수정되었습니다.`);
-
-    navigate(-1);
   };
 
-  const performDateForInput = todo.performDate.substr(0, 16).replace(" ", "T");
+  const todo = todosStatus.findTodoById(status.todoId);
 
   return (
     <>
-      <form className="flex-1 flex p-10 flex-col gap-7" onSubmit={onSubmit}>
-        <TextField
-          label="언제 해야 하나요?"
-          focused
-          type="datetime-local"
-          name="performDate"
-          defaultValue={performDateForInput}
-        />
-        <TextField
-          name="content"
-          label="무엇을 해야하나요?"
-          className="flex-1 flex"
-          InputProps={{ className: "flex-1 flex-col" }}
-          inputProps={{ className: "flex-1" }}
-          multiline
-          defaultValue={todo.content}
-        />
-        <Button type="submit" variant="contained">
-          <span>
-            <i className="fa-solid fa-pen"></i>
-          </span>
-          <span>&nbsp;</span>
-          <span>할 일 수정</span>
-        </Button>
-      </form>
+      <SwipeableDrawer
+        anchor={"bottom"}
+        onOpen={() => {}}
+        open={status.opened}
+        onClose={status.close}
+      >
+        <List className="!py-0">
+          <ListItem className="!pt-6 !p-5">
+            <span className="text-[color:var(--mui-color-primary-main)]">
+              {todo?.id}번
+            </span>
+            <span>&nbsp;</span>
+            <span>할일에 대해서</span>
+          </ListItem>
+          <Divider />
+          <ListItem
+            className="!pt-6 !p-5 !items-baseline"
+            button
+            onClick={removeTodo}
+          >
+            <i className="fa-solid fa-trash-can"></i>
+            &nbsp;
+            <span>삭제</span>
+          </ListItem>
+          <ListItem
+            className="!pt-6 !p-5 !items-baseline"
+            button
+            component={NavLink}
+            to={`/edit/${todo?.id}`}
+          >
+            <i className="fa-solid fa-pen-to-square"></i>
+            &nbsp;
+            <span>수정</span>
+          </ListItem>
+        </List>
+      </SwipeableDrawer>
     </>
   );
 }
