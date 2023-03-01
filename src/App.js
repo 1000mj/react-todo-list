@@ -23,16 +23,19 @@ function App() {
         <Toolbar>
           <NavLink
             to="/main"
-            className="font-bold select-none self-stretch flex items-center mr-auto"
+            className="items-center font-bold select-none self-stretch flex  mr-auto ml-auto"
           >
-            Todo List
+            To Do List
           </NavLink>
           {location.pathname == "/main" && (
             <NavLink
               to="/write"
               className="select-none self-stretch flex items-center"
             >
-              할 일 추가
+              {/* +모양버튼 */}
+              ㅇ
+              <div></div>
+              <div></div>
             </NavLink>
           )}
           {location.pathname != "/main" && (
@@ -41,7 +44,11 @@ function App() {
               className="select-none self-stretch flex items-center cursor-pointer"
               onClick={() => navigate(-1)}
             >
-              리스트
+              {/* 줄세개 찍찍찍 */}
+              ㅇ
+              <div></div>
+              <div></div>
+              <div></div>
             </span>
           )}
         </Toolbar>
