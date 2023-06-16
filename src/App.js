@@ -8,6 +8,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 
+import './App.css'
 import MainPage from "./pages/MainPage";
 import WritePage from "./pages/WritePage";
 import EditPage from "./pages/EditPage";
@@ -32,23 +33,21 @@ function App() {
               to="/write"
               className="select-none self-stretch flex items-center"
             >
-              {/* +모양버튼 */}
-              ㅇ
-              <div></div>
-              <div></div>
+              {/* 플러스버튼 */}
+              <div className="plus1"></div>
+              <div className="plus2"></div>
             </NavLink>
           )}
           {location.pathname != "/main" && (
             <span
               to="/main"
-              className="select-none self-stretch flex items-center cursor-pointer"
+              className="select-none self-stretch  items-center cursor-pointer column"
               onClick={() => navigate(-1)}
             >
-              {/* 줄세개 찍찍찍 */}
-              ㅇ
-              <div></div>
-              <div></div>
-              <div></div>
+              {/* 메뉴버튼 */}
+              <div className="menu1"></div>
+              <div className="menu2"></div>
+              <div className="menu3"></div>
             </span>
           )}
         </Toolbar>
