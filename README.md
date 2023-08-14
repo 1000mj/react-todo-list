@@ -1,16 +1,29 @@
 ## react-todo-list
 
 ## 1.프로젝트 목표
-React를 이용하여 간단한 CRUD 기능이 있는 투두리스트 앱 구현
+- React를 이용하여 간단한 CRUD 기능이 있는 투두리스트 앱 구현
 
 ## 2.알게된 점
-이론적으로 기본개념, 동작원리를 공부했었는데 직접 코드로 짜보면서 이론으로 공부했던 것 보다 조금 더 많이 코드의 흐름을 알게 되었고, 확실히 내가 짠 코드를 보면서 어떤 점을 이해했었는지, 부족 했던 내용인지 확인할수있었다.
+- 이론적으로 기본개념, 동작원리를 공부했었는데 직접 코드로 짜보면서 이론으로 공부했던 것 보다 조금 더 많이 코드의 흐름을 알게 되었고, 확실히 내가 짠 코드를 보면서 어떤 점을 이해했었는지, 부족 했던 내용인지 확인할수있었다.
 
 ## 3.프로젝트에 사용한 기술
-html, css, react, tailwind, MUI 사용
-React
-useRef, useMemo, recoil 사용
-Routes, Route, Navigate, useLocation, NavLink, useNavigate 사용
+- html
+- css
+- react
+- tailwind
+- MUI
+<br/>
+/React/
+
+- useRef
+- useMemo
+- recoil
+- Routes
+- Route
+- Navigate
+- useLocation
+- NavLink
+- useNavigate
 
 ## 4.프로젝트 기능설명
 할 일 추가하기
