@@ -1,4 +1,4 @@
-## react-todo-list
+# <a href="https://1000mj.github.io/react-todo-list" target="_blank">todo-list 사이트</a>
 
 ## 1.프로젝트 목표
 - React를 이용하여 간단한 CRUD 기능이 있는 투두리스트 앱 구현
